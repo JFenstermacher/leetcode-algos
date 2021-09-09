@@ -1,35 +1,31 @@
 package main
 
-import "fmt"
-
 func LengthOfLongestSubstring(s string) int {
-	currLength := 0
+	head := 0
 	maxLength := 0
-	seen := make([]bool, 256)
+	seen := map[rune]int{}
 
-	for i := range s {
-		if seen[s[i]] {
-			seen = make([]bool, 256)
+	for i, c := range s {
+		last, found := seen[c]
 
-			currLength = 1
-		} else {
-			currLength++
-
-			if currLength > maxLength {
-				maxLength = currLength
-			}
+		if found && last >= head {
+			head = last + 1
 		}
 
-		seen[s[i]] = true
+		currLength := i - head + 1
+
+		if currLength > maxLength {
+			maxLength = currLength
+		}
+
+		seen[c] = i
 	}
 
 	return maxLength
 }
 
 func main() {
-	input := "abcabcbb"
+	input := "abba"
 
-	output := LengthOfLongestSubstring(input)
-
-	fmt.Printf("%d", output)
+	LengthOfLongestSubstring(input)
 }
