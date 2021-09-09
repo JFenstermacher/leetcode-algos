@@ -8,8 +8,11 @@ type Input struct {
 }
 
 func TestConvert(t *testing.T) {
-	inputs := []Input{{s: "PAYPALISHIRING", numRows: 3}}
-	outputs := []string{"PAHNAPLSIIGYIR"}
+	inputs := []Input{
+		{s: "PAYPALISHIRING", numRows: 3},
+		{s: "PAYPALISHIRING", numRows: 4},
+	}
+	outputs := []string{"PAHNAPLSIIGYIR", "PINALSIGYAHRPI"}
 
 	for i, input := range inputs {
 		result := Convert(input.s, input.numRows)
