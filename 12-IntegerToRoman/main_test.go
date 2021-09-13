@@ -2,7 +2,7 @@ package main
 
 import "testing"
 
-func TestMaxArea(t *testing.T) {
+func TestIntToRoman(t *testing.T) {
 	inputs := []int{3, 4, 9}
 	outputs := []string{"III", "IV", "IX"}
 
