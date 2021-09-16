@@ -24,7 +24,7 @@ func compareArrs(a1 []string, a2 []string) bool {
 	return true
 }
 
-func TestIsValid(t *testing.T) {
+func TestGenerateParentheses(t *testing.T) {
 	inputs := []int{3, 1}
 	outputs := [][]string{
 		{"((()))", "(()())", "(())()", "()(())", "()()()"},
