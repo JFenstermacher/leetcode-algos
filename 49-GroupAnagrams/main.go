@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 func groupAnagrams(strs []string) [][]string {
-	mapping := map[string]interface{}{}
+	mapping := map[string][]string{}
 
 	for _, str := range strs {
 		counts := make([]int, 26)
@@ -19,14 +19,14 @@ func groupAnagrams(strs []string) [][]string {
 		if !found {
 			mapping[key] = []string{str}
 		} else {
-			arr = append(arr.([]string), str)
+			arr = append(arr, str)
 			mapping[key] = arr
 		}
 	}
 
 	res := [][]string{}
 	for _, val := range mapping {
-		res = append(res, val.([]string))
+		res = append(res, val)
 	}
 
 	return res
