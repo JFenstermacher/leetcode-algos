@@ -3,39 +3,21 @@ package main
 import "fmt"
 
 func spiralOrder(matrix [][]int) []int {
-	ordered := []int{}
-	rowOffset, colOffset := 1, 1
+	ordered := append([]int{}, matrix[0]...)
+	m, n := len(matrix), len(matrix[0])
+	total := m * n
 
-	count, dir, r, c := len(matrix)*len(matrix[0]), 0, 0, 0
-	for count > 0 {
-		if dir == 0 {
-			for ; c < len(matrix[0])-colOffset; c++ {
-				ordered = append(ordered, matrix[r][c])
-				count--
-			}
-		} else if dir == 1 {
-			for ; r < len(matrix)-rowOffset; r++ {
-				ordered = append(ordered, matrix[r][c])
-				count--
-			}
-		} else if dir == 2 {
-			for ; c >= colOffset; c-- {
-				ordered = append(ordered, matrix[r][c])
-				count--
-			}
+	dir, pos, movement := 0, []int{0, n - 1}, [][]int{{1, 0}, {0, -1}, {-1, 0}, {0, 1}}
+	for len(ordered) < total {
+		for i := 1; i < m; i++ {
+			pos[0] += movement[dir][0]
+			pos[1] += movement[dir][1]
 
-			colOffset++
-		} else {
-			for ; r >= rowOffset; r-- {
-				ordered = append(ordered, matrix[r][c])
-				count--
-			}
-
-			r += 1
-			c += 1
-
-			rowOffset++
+			ordered = append(ordered, matrix[pos[0]][pos[1]])
 		}
+
+		m--
+		m, n = n, m
 
 		dir = (dir + 1) % 4
 	}
@@ -45,9 +27,9 @@ func spiralOrder(matrix [][]int) []int {
 
 func main() {
 	input := [][]int{
-		{1, 2, 3, 4},
-		{5, 6, 7, 8},
-		{9, 10, 11, 12},
+		{1, 2},
+		{5, 6},
+		{9, 10},
 	}
 
 	output := spiralOrder(input)
