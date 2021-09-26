@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-func TestMerge(t *testing.T) {
+func TestPlusOne(t *testing.T) {
 	inputs := [][]int{
 		{1, 2, 3},
 		{4, 3, 2, 1},
