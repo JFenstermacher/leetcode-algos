@@ -13,8 +13,11 @@ func TestUniquePathsWithObstacles(t *testing.T) {
 			{0, 1},
 			{0, 0},
 		},
+		{
+			{1, 0},
+		},
 	}
-	outputs := []int{2, 1}
+	outputs := []int{2, 1, 0}
 
 	for i, input := range inputs {
 		output := uniquePathsWithObstacles(input)
