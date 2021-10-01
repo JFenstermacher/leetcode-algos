@@ -11,7 +11,7 @@ func TestSingleNumber(t *testing.T) {
 	outputs := []int{1, 4, 1}
 
 	for i, input := range inputs {
-		output := singleNumber(input)
+		output := smartSingleNumber(input)
 
 		if output != outputs[i] {
 			t.Errorf("Solution %d failed", i)

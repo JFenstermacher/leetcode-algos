@@ -24,7 +24,18 @@ func singleNumber(nums []int) int {
 	return -1
 }
 
+// Totally stolen from top answer
+// So smart, I'm a chump lol
+func smartSingleNumber(nums []int) int {
+	ans := 0
+	for _, num := range nums {
+		ans ^= num
+	}
+
+	return ans
+}
+
 func main() {
-	output := singleNumber([]int{2, 2, 1})
+	output := smartSingleNumber([]int{2, 2, 1})
 	fmt.Println(output)
 }
