@@ -5,14 +5,7 @@ import "fmt"
 func uniquePathsWithObstacles(obstacleGrid [][]int) int {
 	row := getFirstRow(obstacleGrid)
 
-	for i := 0; i < len(obstacleGrid); i++ {
-		if obstacleGrid[i][0] == 1 {
-			obstacleGrid[i][0] = 0
-			break
-		} else {
-			obstacleGrid[i][0] = 1
-		}
-	}
+	zeroFirstCol(obstacleGrid)
 
 	obstacleGrid[0] = row
 
@@ -32,11 +25,12 @@ func uniquePathsWithObstacles(obstacleGrid [][]int) int {
 
 func getFirstRow(obstacleGrid [][]int) []int {
 	row := make([]int, len(obstacleGrid[0]))
+	found := false
 
 	for i := 0; i < len(obstacleGrid[0]); i++ {
-		if obstacleGrid[0][i] == 1 {
+		if obstacleGrid[0][i] == 1 || found {
 			row[i] = 0
-			break
+			found = true
 		} else {
 			row[i] = 1
 		}
@@ -45,8 +39,21 @@ func getFirstRow(obstacleGrid [][]int) []int {
 	return row
 }
 
+func zeroFirstCol(obstacleGrid [][]int) {
+	found := false
+
+	for i := 0; i < len(obstacleGrid); i++ {
+		if obstacleGrid[i][0] == 1 || found {
+			obstacleGrid[i][0] = 0
+			found = true
+		} else {
+			obstacleGrid[i][0] = 1
+		}
+	}
+}
+
 func main() {
-	output := uniquePathsWithObstacles([][]int{{1, 0}})
+	output := uniquePathsWithObstacles([][]int{{1}, {1}})
 
 	fmt.Println(output)
 }
