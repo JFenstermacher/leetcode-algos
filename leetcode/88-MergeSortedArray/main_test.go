@@ -26,7 +26,7 @@ func TestMerge(t *testing.T) {
 		li1 := input[0]
 		last := len(li1) - 1
 
-		merge(li1[:last], li1[last], input[1], len(input[1]))
+		mergeRealSolution(li1[:last], li1[last], input[1], len(input[1]))
 
 		if reflect.DeepEqual(li1[:last], outputs[i]) {
 			t.Errorf("Solution %d failed", i)
