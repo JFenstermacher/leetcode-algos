@@ -2,55 +2,19 @@ package main
 
 import "testing"
 
-func TestAddTwoNumbers(t *testing.T) {
-	l1 := convertToList([]int{2, 4, 3})
-	l2 := convertToList([]int{5, 6, 4})
+func TestPartition(t *testing.T) {
+	li := convertToList([]int{1, 4, 3, 2, 5, 2})
+	output := partition(li, 3)
 
-	expected := []int{7, 0, 8}
+	expected := []int{1, 2, 2, 4, 3, 5}
 
-	res := AddTwoNumbers(l1, l2)
+	for i := 0; output != nil; i++ {
+		if expected[i] != output.Val {
+			t.Errorf("Solution fails")
 
-	index := 0
-	for res != nil {
-		if res.Val != expected[index] {
-			t.Error("Solution doesn't work")
+			break
 		}
 
-		res = res.Next
-		index++
-	}
-
-	l1 = convertToList([]int{5})
-	l2 = convertToList([]int{5})
-
-	expected = []int{0, 1}
-	res = AddTwoNumbers(l1, l2)
-
-	index = 0
-	for res != nil {
-		if res.Val != expected[index] {
-			t.Error("Solution doesn't work")
-		}
-
-		res = res.Next
-		index++
-	}
-}
-
-func TestCarryOn(t *testing.T) {
-	li := convertToList([]int{9, 9, 9})
-
-	res := CarryOn(li, 1)
-
-	expected := []int{0, 0, 0, 1}
-
-	index := 0
-	for res != nil {
-		if res.Val != expected[index] {
-			t.Error("Solution doesn't work")
-		}
-
-		res = res.Next
-		index++
+		output = output.Next
 	}
 }
